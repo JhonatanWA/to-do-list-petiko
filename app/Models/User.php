@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
+
+use App\Models\Task; 
 
 class User extends Authenticatable
 {
@@ -33,6 +35,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    protected $with = ['roles'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -58,7 +63,12 @@ class User extends Authenticatable
 
     public function hasRole(string $roleName): bool
     {
-        return $this->roles()->where('name', $roleName)->exists();
+        return $this->roles->contains('name', $roleName);
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
     }
 
 }
