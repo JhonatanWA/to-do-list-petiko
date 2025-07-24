@@ -206,6 +206,7 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'is_completed' => 'boolean',
             'due_date' => 'required|nullable|after_or_equal:today',
+            'user_id' => 'required|nullable'
         ]);
 
         $task->update($validated);
