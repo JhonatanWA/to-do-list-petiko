@@ -7,7 +7,9 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\RoleMiddleware;
 
-const ROLE_ADMIN = [RoleMiddleware::class . ':admin'];
+if (!defined('ROLE_ADMIN')) {
+    define('ROLE_ADMIN', [App\Http\Middleware\RoleMiddleware::class . ':admin']);
+}
 
 Route::get('/', function () {
     return Inertia::render('Auth/Login');
