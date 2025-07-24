@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\RoleMiddleware;
 
 const ROLE_ADMIN = [RoleMiddleware::class . ':admin'];
-const ROLE_USER = [RoleMiddleware::class . ':user'];
 
 Route::get('/', function () {
     return Inertia::render('Auth/Login');

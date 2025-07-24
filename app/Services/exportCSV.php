@@ -5,6 +5,12 @@ namespace App\Services;
 use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
+/**
+ * Class exportCSV
+ * @package App\Services
+ *
+ * Service class for exporting data to CSV format.
+ */
 class exportCSV 
 {
     /**
