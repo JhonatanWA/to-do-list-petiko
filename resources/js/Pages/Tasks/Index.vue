@@ -85,13 +85,23 @@ const completedTasks = computed(() => {
 
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-medium">Tarefas Pendentes</h3>
-                <Link
-                    v-if="isAdmin"
-                    :href="route('tasks.create')"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200"
-                >
-                    + Nova Tarefa
-                </Link>
+                <div class="flex justify-between items-center">
+                    <a
+                        :href="route('tasks.export', { search: searchQuery })"
+                        target="_blank"
+                        rel="noopener"
+                        class="px-4 py-2 mr-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-200"
+                    >
+                        Exportar para CSV
+                    </a>
+                    <Link
+                        v-if="isAdmin"
+                        :href="route('tasks.create')"
+                        class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200"
+                    >
+                        + Nova Tarefa
+                    </Link>
+                </div>
             </div>
 
             <div v-if="pendingTasks.length === 0" class="text-gray-600">

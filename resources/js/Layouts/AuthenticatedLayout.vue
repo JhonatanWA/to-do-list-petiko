@@ -149,10 +149,10 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
+                            :href="route('tasks.index')"
+                            :active="route().current('tasks.index')"
                         >
-                            Dashboard
+                            Tasks
                         </ResponsiveNavLink>
                     </div>
 

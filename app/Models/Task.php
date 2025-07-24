@@ -16,6 +16,13 @@ class Task extends Model
         'is_completed',
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['due_date'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

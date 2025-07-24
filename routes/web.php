@@ -14,11 +14,6 @@ Route::get('/', function () {
     return Inertia::render('Auth/Login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -26,7 +21,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('tasks', TaskController::class);
+    Route::resource('tasks', TaskController::class)->except(['show']);
+
+    Route::get('/tasks/exportCsv', [TaskController::class, 'exportCsv'])->name('tasks.export');
 });
 
 Route::prefix('admin')->group(function () {
